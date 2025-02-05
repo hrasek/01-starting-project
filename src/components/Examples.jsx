@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { CORE_CONCEPTS, EXAMPLES } from './../data.js';
 import TabButton from './TabButton.jsx';
+import Section from './Section.jsx';
 
 export default function Examples() {
 
@@ -10,11 +11,10 @@ export default function Examples() {
         setSelectedTopic(selectedButton.toLowerCase());
     } 
     return (
-        <section id="examples">
-          <h2>Examples</h2>
+        <Section title="Examples" id="examples">
           <menu>
             {CORE_CONCEPTS.map((concept) => (
-              <TabButton isSelected={selectedTopic === concept.title.toLowerCase()} onSelect={() => handleSelect(concept.title)} key={concept.title}>{concept.title}</TabButton>
+              <TabButton isSelected={selectedTopic === concept.title.toLowerCase()} onClick={() => handleSelect(concept.title)} key={concept.title}>{concept.title}</TabButton>
             )
             )}
           </menu>
@@ -27,6 +27,6 @@ export default function Examples() {
               </pre>
             </div>) : (<p>Please select a topic.</p>)
           }
-        </section>  
+        </Section>  
     );
 }   
